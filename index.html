@@ -7,11 +7,33 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Arrow</title>
 
+    <!--jquery-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+            integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <!--jquery-->
+
+    <!--js file-->
+    <script src="./js/app.js"></script>
+    <!--js file-->
+
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+
     <!--stylesheet-->
     <link rel="stylesheet" href="assets/css/style.css">
     <!--stylesheet-->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <!--owl carousel-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
+          integrity="sha512-tS3S5qG0BlhnQROyJXvNjeEM4UpMXHrQfTGmbQ1gKmelCxlSEBUaxhRBj/EFTzpbP4RVSrpEikbmdJobCvhE3g=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css"
+          integrity="sha512-sMXtMNL1zRzolHYKEujM2AqCLUR9F2C4/05cdbxjjLSRvMQIciEPCQZo++nk7go3BtSuK9kfa/s+a4f4i5pLkw=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <!--owl carousel-->
 </head>
 <body>
 <!--header start-->
@@ -51,28 +73,158 @@
 
 <!--home-slider start-->
 <div class="home-slider">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="slider-item text-center position-relative" style="background-image: url('/images/bg1.jpg')">
-                <div class="slider-content">
-                    <div class="overflow-hidden d-inline-block">
-                        <div class="row">
-                            <div class="offset-lg-1 col-lg-10">
-                                <h1 class="animate__animated animate__fadeInRight">We Are Creative Digital Agency!</h1>
-                            </div>
+    <div class="slider-wrap owl-carousel owl-theme">
+        <!--each slider-->
+        <div class="slider-item text-center position-relative" style="background-image: url('./images/bg1.jpg')">
+            <div class="slider-content">
+                <div class="overflow-hidden d-inline-block">
+                    <div class="row">
+                        <div class="offset-lg-1 col-lg-10">
+                            <h1 class="animate__animated animate__fadeInRight">We Are Creative Digital Agency!</h1>
+                            <p class="animate__animated animate__fadeInUp">We are a passionate digital design agency
+                                that specializes in beautiful and easy-to-use digital design &amp; web development
+                                services.</p>
+                            <a href="javascript:void(0)" class="btn mt-30 btn-theme">
+                                <span>Get started</span>
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
         </div>
+        <!--each slider-->
+
+        <!--each slider-->
+        <div class="slider-item text-center position-relative" style="background-image: url('./images/bg2.jpg')">
+            <div class="slider-content">
+                <div class="overflow-hidden d-inline-block">
+                    <div class="row">
+                        <div class="offset-lg-1 col-lg-10">
+                            <h1 class="animate__animated animate__fadeInRight">We Are Creative Digital Agency!</h1>
+                            <p class="animate__animated animate__fadeInUp">We are a passionate digital design agency
+                                that specializes in beautiful and easy-to-use digital design &amp; web development
+                                services.</p>
+                            <a href="javascript:void(0)" class="btn mt-30 btn-theme">
+                                <span>Get started</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--each slider-->
+
+        <!--each slider-->
+        <div class="slider-item text-center position-relative" style="background-image: url('./images/bg3.jpg')">
+            <div class="slider-content">
+                <div class="overflow-hidden d-inline-block">
+                    <div class="row">
+                        <div class="offset-lg-1 col-lg-10">
+                            <h1 class="animate__animated animate__fadeInRight">We Are Creative Digital Agency!</h1>
+                            <p class="animate__animated animate__fadeInUp">We are a passionate digital design agency
+                                that specializes in beautiful and easy-to-use digital design &amp; web development
+                                services.</p>
+                            <a href="javascript:void(0)" class="btn mt-30 btn-theme">
+                                <span>Get started</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--each slider-->
+
     </div>
 </div>
 <!--home-slider end  -->
 
 
+<!--about section start-->
+<section class="about-section sec-wrap text-center">
+    <div class="container">
+        <div class="row">
+            <div class="about-top-text col-lg-10 offset-lg-1 mb-80">
+                <h5>Welcome To Our Agency</h5>
+                <h3>Who We Are And What Can We do?</h3>
+                <p>We’re full service which means we’ve got you covered on design and content right through to digital.
+                    You’ll form a lasting relationship with us, collaboration is central to everything we do. We’ll push
+                    you out of your comfort zone from time-to-time, but this is where you’ll shine. Bottom line is we
+                    want you to succeed at Faculty.</p>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="about-item">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-tablet-screen-button"></i>
+                    </div>
+                    <h6>Web Design</h6>
+                    <p>Lorem Ipsum simply dummy text of the printing and type setting when an unknown printing simply
+                        dummy industry.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="about-item">
+                    <div class="icon-wrap">
+                        <i class="fa-solid fa-pen-ruler"></i>
+                    </div>
+                    <h6>Development</h6>
+                    <p>Lorem Ipsum simply dummy text of the printing and type setting when an unknown printing simply
+                        dummy industry.</p>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="about-item">
+                    <div class="icon-wrap">
+                        <i class="fa-regular fa-pen-to-square"></i>
+                    </div>
+                    <h6>Branding</h6>
+                    <p>Lorem Ipsum simply dummy text of the printing and type setting when an unknown printing simply
+                        dummy industry.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!--about section end  -->
+
+
 <!--font awesome icon-->
 <script src="https://kit.fontawesome.com/807ba58bd3.js" crossorigin="anonymous"></script>
 <!--font awesome icon-->
+
+<!--owl carousel-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"
+        integrity="sha512-bPs7Ae6pVvhOSiIcyUClR7/q2OAsRiovw4vAkX+zJbw3ShAeeqezq50RIIcIURq7Oa20rW2n2q+fyXBNcU9lrw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!--owl carousel-->
+
+
+<script>
+    $(document).ready(function () {
+        $(".owl-carousel").owlCarousel();
+    });
+
+    $('.slider-wrap').owlCarousel({
+        loop: true,
+        autoplay: true,
+        animateOut: 'fadeOut',
+        margin: 10,
+        nav: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 1
+            }
+        }
+    })
+</script>
 </body>
 </html>

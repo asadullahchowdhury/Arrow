@@ -1,0 +1,64 @@
+/*home-slider*/
+
+.home-slider {
+  min-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+  .slider-item {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+
+    .slider-content {
+      position: absolute;
+      width: 100%;
+      top: 50%;
+      left: 0;
+      padding-top: 1px;
+      transform: translate(0%, -50%);
+      color: $white;
+
+      h1 {
+        font-size: 55px;
+        font-weight: 500;
+        animation-delay: .6s;
+      }
+
+      p {
+        margin-top: 15px;
+        font-size: 15px;
+        font-weight: 400;
+        color: $text;
+        padding: 0 30px;
+        letter-spacing: 1px;
+        word-spacing: 2px;
+        animation-delay: 1s;
+      }
+    }
+  }
+
+  .owl-dots {
+    position: absolute;
+    top: 90%;
+    left: 48%;
+
+    .owl-dot {
+      span{
+        width: 8px;
+        height: 8px;
+      }
+      &.active {
+        span {
+          background: $theme !important;
+        }
+      }
+
+      &:hover {
+        span {
+          background: $theme !important;
+        }
+      }
+    }
+  }
+}
