@@ -1,0 +1,39 @@
+.footer {
+  padding: 50px 0;
+
+  .logo {
+    padding: 15px 0;
+    width: 100px;
+  }
+
+  .socials {
+    a {
+      color: $white;
+      font-size: 13px;
+      width: 35px;
+      height: 35px;
+      line-height: 40px;
+      border-radius: 50%;
+      background: $dark;
+      margin: 15px 5px;
+      display: inline-block;
+      transition: .4s all;
+
+      &:hover {
+        background: $theme;
+        transition: .4s all;
+      }
+    }
+  }
+
+  p {
+    font-weight: 400;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: 'Khula', sans-serif;
+    color: $grayish;
+    line-height: 2;
+    margin: 0;
+  }
+}

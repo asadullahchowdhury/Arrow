@@ -1,0 +1,31 @@
+.number-section{
+  padding: 80px 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  .each-num-wrap{
+    @media screen and (max-width: 991px) {
+      margin-bottom: 50px;
+    }
+    position: relative;
+    z-index: 2;
+    .icon{
+      font-size: 35px;
+      color: $theme;
+      margin-bottom: 30px;
+    }
+    .num{
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 30px;
+      color: $white;
+    }
+    .num-title{
+      font-weight: 300;
+      font-size: 18px;
+      margin: 0;
+      color: $white;
+    }
+  }
+}

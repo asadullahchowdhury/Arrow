@@ -46,3 +46,53 @@
     background: $white;
   }
 }
+
+
+.btn-theme2 {
+  background: white;
+  color: $black;
+  border-color: $theme;
+  animation-delay: 1.2s;
+  padding: 12px 40px;
+  border-radius: 30px;
+  position: relative;
+  z-index: 3;
+  margin-left: 10px;
+  margin-right: 10px;
+  box-shadow: -15px 15px 20px rgba(0, 0, 0, 0.1);
+  transition: all .4s;
+  cursor: pointer;
+  outline: none !important;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: 100%;
+    background: $white;
+    border-radius: 30px;
+    position: absolute;
+    left: 50%;
+    top: 0px;
+    z-index: 1;
+    opacity: .5;
+    transition: all .4s;
+  }
+
+  &:hover {
+    border-color: $theme;
+    background: transparent;
+
+    span {
+      position: relative;
+      z-index: 3;
+      color: $white !important;
+    }
+  }
+
+  &:hover:after {
+    width: 100%;
+    left: 0;
+    opacity: 1;
+    background: $theme;
+  }
+}

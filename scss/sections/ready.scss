@@ -1,0 +1,30 @@
+.ready-section {
+  .sm-title {
+    position: relative;
+    z-index: 2;
+  }
+
+  .title-big {
+    position: relative;
+    z-index: 2;
+    color: $white;
+    font-weight: 700;
+    margin-bottom: 15px;
+    font-size: 35px;
+  }
+
+  p {
+    position: relative;
+    z-index: 2;
+    font-size: 15px;
+    font-weight: 400;
+    font-family: 'Khula', sans-serif;
+    color: $gray-3;
+    line-height: 2;
+    margin: 0;
+  }
+
+  .btn-theme {
+    margin-top: 30px;
+  }
+}

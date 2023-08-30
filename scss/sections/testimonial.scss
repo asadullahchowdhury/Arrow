@@ -1,0 +1,58 @@
+.testimonial-section {
+  background-size: auto;
+  background-repeat: repeat;
+
+  .testimonial-content-wrap {
+    .each-testimonial {
+      margin:0 20px;
+      p {
+        padding: 50px 30px;
+        font-size: 14px;
+        background: $white;
+        box-shadow: 0px 10px 40px -4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 50px;
+        position: relative;
+        font-weight: 400;
+        font-family: 'Khula', sans-serif;
+        color: $grayish;
+        line-height: 2;
+
+        i {
+          width: 50px;
+          height: 50px;
+          line-height: 50px;
+          text-align: center;
+          border-radius: 50%;
+          background: $white;
+          box-shadow: 0px 10px 40px -4px rgba(0, 0, 0, 0.1);
+          color: $theme;
+          font-size: 18px;
+          position: absolute;
+          bottom: -25px;
+          left: 25px;
+        }
+      }
+
+      .client-img {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .info {
+        h5 {
+          font-size: 14px;
+          letter-spacing: 1px;
+          font-weight: 500;
+        }
+
+        h6 {
+          font-size: 12px;
+          font-weight: 500;
+          color: $gray-4;
+        }
+      }
+    }
+  }
+}

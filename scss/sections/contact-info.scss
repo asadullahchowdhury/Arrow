@@ -1,0 +1,48 @@
+.contact-section {
+  .bg-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    .info {
+      padding: 100px 5%;
+      position: relative;
+      z-index: 3;
+
+      .about {
+        margin-bottom: 50px;
+
+        h3 {
+          font-size: 25px;
+          font-weight: 700;
+          margin-bottom: 15px;
+          color: $white;
+        }
+
+        p {
+          font-size: 15px;
+          font-weight: 400;
+          font-family: 'Khula', sans-serif;
+          color: $gray-3;
+          line-height: 2;
+          margin: 0;
+        }
+      }
+
+      .item{
+        i{
+          float: left;
+          font-size: 20px;
+          color:$theme;
+        }
+        .content{
+          margin-left: 40px;
+          p{
+            display: inline-block;
+            font-size: 14px;
+            color: $gray-3;
+          }
+        }
+      }
+    }
+  }
+}
