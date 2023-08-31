@@ -19,9 +19,7 @@
             crossorigin="anonymous"></script>
     <!--bootstrap js-->
 
-    <!--js file-->
-    <script src="./js/app.js"></script>
-    <!--js file-->
+
 
     <!--bootstrap-->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
@@ -45,29 +43,33 @@
 </head>
 <body>
 <!--header start-->
-<header class="header">
+<header class="header" id="header">
     <!--navbar start-->
     <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a href="javascript:void(0)" class="logo">
+            <a href="javascript:void(0)" class="logo light">
                 <img src="images/logo-light.png" alt="">
             </a>
 
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarContent"
+            <a href="javascript:void(0)" class="logo dark">
+                <img src="images/logo-dark.png" alt="">
+            </a>
+
+            <button class="navbar-toggler border-0 py-2 collapsed" type="button" data-toggle="collapse" data-target="#navbarHome"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     fdprocessedid="lkob45">
                 <span class="icon-bar"><i class="fas fa-bars"></i></span>
             </button>
 
-            <div class="navbar-collapse" id="navbar">
+            <div class="navbar-collapse collapse" id="navbarHome">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">About</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Services</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Portfolio</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Price</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Blog</a></li>
-                    <li class="nav-item"><a href="javascript:void(0)" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
+                    <li class="nav-item"><a href="#pricing" class="nav-link">Price</a></li>
+                    <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
 
                 </ul>
             </div>
@@ -80,10 +82,10 @@
 
 
 <!--home-slider start-->
-<div class="home-slider">
+<div class="home-slider" id="home">
     <div class="slider-wrap owl-carousel owl-theme">
         <!--each slider-->
-        <div class="slider-item text-center position-relative" style="background-image: url('./images/bg1.jpg')">
+        <div class="slider-item text-center position-relative overlay" style="background-image: url('./images/bg1.jpg')">
             <div class="slider-content">
                 <div class="overflow-hidden d-inline-block">
                     <div class="row">
@@ -103,7 +105,7 @@
         <!--each slider-->
 
         <!--each slider-->
-        <div class="slider-item text-center position-relative" style="background-image: url('./images/bg2.jpg')">
+        <div class="slider-item text-center position-relative overlay" style="background-image: url('./images/bg2.jpg')">
             <div class="slider-content">
                 <div class="overflow-hidden d-inline-block">
                     <div class="row">
@@ -123,7 +125,7 @@
         <!--each slider-->
 
         <!--each slider-->
-        <div class="slider-item text-center position-relative" style="background-image: url('./images/bg3.jpg')">
+        <div class="slider-item text-center position-relative overlay" style="background-image: url('./images/bg3.jpg')">
             <div class="slider-content">
                 <div class="overflow-hidden d-inline-block">
                     <div class="row">
@@ -148,7 +150,7 @@
 
 
 <!--about section start-->
-<section class="about-section sec-wrap text-center">
+<section class="about-section sec-wrap text-center" id="about">
     <div class="container">
         <div class="row">
             <div class="about-top-text col-lg-10 offset-lg-1 mb-80">
@@ -259,7 +261,7 @@
 
 
 <!--service section start-->
-<section class="service-section sec-wrap">
+<section class="service-section sec-wrap" >
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
@@ -381,7 +383,7 @@
 
 
 <!--portfolio section start-->
-<section class="portfolio-section sec-wrap">
+<section class="portfolio-section sec-wrap" id="portfolio">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center ">
@@ -633,7 +635,7 @@
 
 
 <!--our service section start-->
-<section class="our-service-section overlay sec-wrap" style="background-image: url('./images/bg4.jpg')">
+<section class="our-service-section overlay sec-wrap" style="background-image: url('./images/bg4.jpg')" id="services">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -837,7 +839,7 @@
 
 
 <!--our pricing section start-->
-<section class="pricing-section sec-wrap">
+<section class="pricing-section sec-wrap" id="pricing">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -1108,7 +1110,7 @@
 
 
 <!--latest news section start-->
-<section class="latest-news-section sec-wrap" id="latest-news">
+<section class="latest-news-section sec-wrap" id="blog">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center mb-5">
@@ -1203,7 +1205,7 @@
 
 
 <!--contact us section start-->
-<section class="contact-us-section sec-wrap">
+<section class="contact-us-section sec-wrap" id="contact">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 text-center mb-5">
@@ -1303,10 +1305,10 @@
             </div>
 
             <div class="col-lg-6 p-0">
-                <div class="map-wrap">
+                <div class="map-wrap h-100">
                     <iframe class="w-100"
                             src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14671.149755826922!2d89.21976099999999!3d23.17795685!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1693406177461!5m2!1sen!2sbd"
-                            width="600" height="460" style="border:0;" allowfullscreen="" loading="lazy"
+                            width="600" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
                             referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
@@ -1364,121 +1366,14 @@
 <!--owl carousel-->
 
 
+
+
+<!--js file-->
+<script src="./js/app.js"></script>
+<!--js file-->
+
 <script>
-    $(document).ready(function () {
-        $(".owl-carousel").owlCarousel();
-    });
 
-    $('.slider-wrap').owlCarousel({
-        loop: true,
-        autoplay: true,
-        animateOut: 'fadeOut',
-        margin: 10,
-        nav: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 1
-            },
-            1000: {
-                items: 1
-            }
-        }
-    })
-
-    $('.service-nav-slider').owlCarousel({
-        loop: true,
-        // autoplay: true,
-        margin: 0,
-        nav: true,
-        navText: [
-            '<i class="fa-solid fa-chevron-left"></i>',
-            '<i class="fa-solid fa-chevron-right"></i>'
-        ],
-        dots: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 3
-            },
-            1000: {
-                items: 4
-            }
-        }
-    })
-
-    $('.testimonial-content-wrap').owlCarousel({
-        loop: true,
-        // autoplay: true,
-        margin: 20,
-        nav: true,
-        navText: [
-            '<i class="fa-solid fa-chevron-left"></i>',
-            '<i class="fa-solid fa-chevron-right"></i>'
-        ],
-        dots: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    })
-
-    $('.team-wrap').owlCarousel({
-        loop: true,
-        // autoplay: true,
-        margin: 20,
-        nav: true,
-        navText: [
-            '<i class="fa-solid fa-chevron-left"></i>',
-            '<i class="fa-solid fa-chevron-right"></i>'
-        ],
-        dots: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 4
-            }
-        }
-    })
-
-    $('.client-slider-wrap').owlCarousel({
-        loop: true,
-        // autoplay: true,
-        margin: 20,
-        nav: true,
-        navText: [
-            '<i class="fa-solid fa-chevron-left"></i>',
-            '<i class="fa-solid fa-chevron-right"></i>'
-        ],
-        dots: false,
-        responsive: {
-            0: {
-                items: 2
-            },
-            600: {
-                items: 4
-            },
-            1000: {
-                items: 6
-            }
-        }
-    })
 </script>
 </body>
 </html>
