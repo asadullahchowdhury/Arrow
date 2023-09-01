@@ -11,6 +11,10 @@
     font-weight: 700;
     margin-bottom: 15px;
     font-size: 35px;
+    @media screen and (max-width: 767px) {
+      font-size: 25px;
+    }
+
   }
 
   p {

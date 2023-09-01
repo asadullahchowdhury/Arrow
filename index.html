@@ -20,7 +20,6 @@
     <!--bootstrap js-->
 
 
-
     <!--bootstrap-->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
     <!--bootstrap-->
@@ -42,6 +41,20 @@
     <!--owl carousel-->
 </head>
 <body>
+
+<!--page loader-->
+<div class="page-loader">
+    <div class="middle">
+        <div class="anim">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</div>
+<!--page loader-->
+
 <!--header start-->
 <header class="header" id="header">
     <!--navbar start-->
@@ -55,7 +68,8 @@
                 <img src="images/logo-dark.png" alt="">
             </a>
 
-            <button class="navbar-toggler border-0 py-2 collapsed" type="button" data-toggle="collapse" data-target="#navbarHome"
+            <button class="navbar-toggler border-0 py-2 collapsed" type="button" data-toggle="collapse"
+                    data-target="#navbarHome"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
                     fdprocessedid="lkob45">
                 <span class="icon-bar"><i class="fas fa-bars"></i></span>
@@ -85,7 +99,8 @@
 <div class="home-slider" id="home">
     <div class="slider-wrap owl-carousel owl-theme">
         <!--each slider-->
-        <div class="slider-item text-center position-relative overlay" style="background-image: url('./images/bg1.jpg')">
+        <div class="slider-item text-center position-relative overlay"
+             style="background-image: url('./images/bg1.jpg')">
             <div class="slider-content">
                 <div class="overflow-hidden d-inline-block">
                     <div class="row">
@@ -105,7 +120,8 @@
         <!--each slider-->
 
         <!--each slider-->
-        <div class="slider-item text-center position-relative overlay" style="background-image: url('./images/bg2.jpg')">
+        <div class="slider-item text-center position-relative overlay"
+             style="background-image: url('./images/bg2.jpg')">
             <div class="slider-content">
                 <div class="overflow-hidden d-inline-block">
                     <div class="row">
@@ -125,7 +141,8 @@
         <!--each slider-->
 
         <!--each slider-->
-        <div class="slider-item text-center position-relative overlay" style="background-image: url('./images/bg3.jpg')">
+        <div class="slider-item text-center position-relative overlay"
+             style="background-image: url('./images/bg3.jpg')">
             <div class="slider-content">
                 <div class="overflow-hidden d-inline-block">
                     <div class="row">
@@ -261,7 +278,7 @@
 
 
 <!--service section start-->
-<section class="service-section sec-wrap" >
+<section class="service-section sec-wrap">
     <div class="container">
         <div class="row">
             <div class="col-lg-4 col-md-6">
@@ -348,7 +365,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="each-num-wrap text-center">
                     <div class="icon"><i class="fa-regular fa-heart"></i></div>
-                    <h4 class="num">368</h4>
+                    <h4 class="num num-1">0</h4>
                     <h6 class="num-title">Happy Clients</h6>
                 </div>
             </div>
@@ -356,7 +373,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="each-num-wrap text-center">
                     <div class="icon"><i class="fa-solid fa-layer-group"></i></div>
-                    <h4 class="num">937</h4>
+                    <h4 class="num num-2">0</h4>
                     <h6 class="num-title">Projects Compleated</h6>
                 </div>
             </div>
@@ -364,7 +381,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="each-num-wrap text-center">
                     <div class="icon"><i class="fa-solid fa-download"></i></div>
-                    <h4 class="num">438</h4>
+                    <h4 class="num num-3">0</h4>
                     <h6 class="num-title">Files Downloaded</h6>
                 </div>
             </div>
@@ -372,7 +389,7 @@
             <div class="col-lg-3 col-md-6">
                 <div class="each-num-wrap text-center">
                     <div class="icon"><i class="fa-solid fa-shield-halved"></i></div>
-                    <h4 class="num">5946</h4>
+                    <h4 class="num num-4">0</h4>
                     <h6 class="num-title">Liens Of Code</h6>
                 </div>
             </div>
@@ -635,7 +652,7 @@
 
 
 <!--our service section start-->
-<section class="our-service-section overlay sec-wrap" style="background-image: url('./images/bg4.jpg')" id="services">
+<section class="our-service-section clearfix overlay sec-wrap" style="background-image: url('./images/bg4.jpg')" id="services">
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
@@ -696,7 +713,7 @@
                             <div class="project-tab-main">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <div class="service-info text-end">
+                                        <div class="service-info text-md-end text-start">
                                             <div class="service-sm-title">Creative Web Design</div>
                                             <h3 class="service-title">We Build Unique Designs And Creat a Creative
                                                 Websites.</h3>
@@ -1319,38 +1336,37 @@
 <!--contact info section end  -->
 
 
-
 <!--footer section start-->
 <section class="footer">
-<div class="container text-center">
-    <a href="javacript:void(0)" class="logo">
-        <img src="./images/logo-dark.png" alt="">
-    </a>
-
-    <div class="socials">
-        <a href="javascript:void(0)">
-            <i class="fa-brands fa-facebook-f"></i>
+    <div class="container text-center">
+        <a href="javacript:void(0)" class="logo">
+            <img src="./images/logo-dark.png" alt="">
         </a>
 
-        <a href="javascript:void(0)">
-            <i class="fa-brands fa-twitter"></i>
-        </a>
+        <div class="socials">
+            <a href="javascript:void(0)">
+                <i class="fa-brands fa-facebook-f"></i>
+            </a>
 
-        <a href="javascript:void(0)">
-            <i class="fa-brands fa-linkedin-in"></i>
-        </a>
+            <a href="javascript:void(0)">
+                <i class="fa-brands fa-twitter"></i>
+            </a>
 
-        <a href="javascript:void(0)">
-            <i class="fa-brands fa-behance"></i>
-        </a>
+            <a href="javascript:void(0)">
+                <i class="fa-brands fa-linkedin-in"></i>
+            </a>
 
-        <a href="javascript:void(0)">
-            <i class="fa-brands fa-instagram"></i>
-        </a>
+            <a href="javascript:void(0)">
+                <i class="fa-brands fa-behance"></i>
+            </a>
+
+            <a href="javascript:void(0)">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+
+        <p>© 2023 Rahat Chowdhury. All Rights Reserved.</p>
     </div>
-
-    <p>© 2023 Rahat Chowdhury. All Rights Reserved.</p>
-</div>
 </section>
 <!--footer section end  -->
 
@@ -1366,13 +1382,12 @@
 <!--owl carousel-->
 
 
-
-
 <!--js file-->
 <script src="./js/app.js"></script>
 <!--js file-->
 
 <script>
+
 
 </script>
 </body>

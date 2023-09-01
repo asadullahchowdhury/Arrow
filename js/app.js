@@ -26,6 +26,52 @@ $(function () {
     });
 });
 
+/*page preloader*/
+function PreLoader(){
+    let loader = document.querySelector('.page-loader')
+
+    setTimeout(()=>{
+        loader.classList.add('d-none')
+    },1000)
+}
+PreLoader()
+
+
+
+/*counters*/
+window.addEventListener('load', function () {
+    const nums = document.querySelectorAll('.num')
+    nums.forEach((num) => {
+        if (num.classList.contains('num-1')) {
+            countUP('.num-1', 368)
+        } else if (num.classList.contains('num-2')) {
+            countUP('.num-2', 937)
+        } else if (num.classList.contains('num-3')) {
+            countUP('.num-3', 442)
+        } else if (num.classList.contains('num-4')) {
+            countUP('.num-4', 1946)
+        }
+        console.log(num)
+    })
+
+})
+
+function countUP(c, number) {
+    const count1 = document.querySelector(c)
+    const count1val = parseInt(document.querySelector('.num-1').innerText)
+    let count = count1val
+    console.log(count1val, 'hello')
+    let timeout = null
+    timeout = setInterval(() => {
+        if (count >= number) {
+            clearInterval(timeout)
+        }
+        count1.innerText = count++
+
+    }, .1)
+
+
+}
 
 
 /*sliders*/
@@ -55,7 +101,7 @@ $('.slider-wrap').owlCarousel({
 $('.service-nav-slider').owlCarousel({
     loop: true,
     // autoplay: true,
-    margin: 0,
+    margin: 10,
     nav: true,
     navText: [
         '<i class="fa-solid fa-chevron-left"></i>',
@@ -67,7 +113,7 @@ $('.service-nav-slider').owlCarousel({
             items: 1
         },
         600: {
-            items: 3
+            items: 2
         },
         1000: {
             items: 4
@@ -102,7 +148,7 @@ $('.team-wrap').owlCarousel({
     loop: true,
     // autoplay: true,
     margin: 20,
-    nav: true,
+    nav: false,
     navText: [
         '<i class="fa-solid fa-chevron-left"></i>',
         '<i class="fa-solid fa-chevron-right"></i>'

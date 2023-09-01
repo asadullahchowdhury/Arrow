@@ -55,6 +55,9 @@
       font-weight: 600;
       font-size: 40px;
       line-height: 1.2;
+      @media screen and (max-width: 767px) {
+        font-size: 25px;
+      }
     }
     .desc{
       font-size: 15px;

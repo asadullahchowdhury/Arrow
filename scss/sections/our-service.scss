@@ -38,6 +38,9 @@
         border-right: 1px solid rgba(255, 255, 255, 0.1);
         cursor: pointer;
         width: 100%;
+        @media screen and (max-width: 576px) {
+  width: 80%;
+        }
 
         &.active {
           background: $theme;
@@ -74,12 +77,16 @@
     }
 
     .owl-nav {
+      position: absolute;
+      top: 35%;
+      left: 0;
+      right: 0;
       .owl-prev {
-        position: absolute;
         display: flex;
+
         justify-content: center;
         align-items: center;
-        top: 35%;
+        position: absolute;
         color: $theme;
         width: 35px;
         left: -40px;
@@ -101,7 +108,6 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        top: 35%;
         color: $theme;
         width: 35px;
         right: -40px;
@@ -146,12 +152,19 @@
         color: $theme;
         margin-bottom: 10px;
         font-size: 18px;
+        @media screen and (max-width: 767px) {
+          font-size: 16px;
+        }
       }
 
       .service-title {
         line-height: 1.4;
         font-size: 35px;
         color: $white;
+
+        @media screen and (max-width: 767px) {
+          font-size: 25px;
+        }
       }
     }
 
@@ -166,6 +179,10 @@
         font-family: 'Khula', sans-serif;
         line-height: 2;
         margin: 0;
+        @media screen and (max-width: 767px) {
+          font-size: 14px;
+          line-height: 1.5;
+        }
       }
     }
   }
