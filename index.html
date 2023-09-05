@@ -68,17 +68,19 @@
                 <img src="images/logo-dark.png" alt="">
             </a>
 
-            <button class="navbar-toggler border-0 py-2 collapsed" type="button" data-toggle="collapse"
-                    data-target="#navbarHome"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-                    fdprocessedid="lkob45">
-                <span class="icon-bar"><i class="fas fa-bars"></i></span>
+<!--            <button class="navbar-toggler border-0 py-2 collapsed" type="button" data&#45;&#45;bs-toggle="collapse"-->
+<!--                    data-bs-target="#navbarHome"-->
+<!--                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"-->
+<!--                    fdprocessedid="lkob45">-->
+<!--                <span class="icon-bar"><i class="fas fa-bars"></i></span>-->
+<!--            </button>-->
+            <button class="navbar-toggler border-0 py-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHome" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars"></i>
             </button>
-
-            <div class="navbar-collapse collapse" id="navbarHome">
+            <div class="navbar-collapse text-lg-end text-center collapse" id="navbarHome">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
-                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#home" class="nav-link homeId active">Home</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link aboutId">About</a></li>
                     <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
                     <li class="nav-item"><a href="#portfolio" class="nav-link">Portfolio</a></li>
                     <li class="nav-item"><a href="#pricing" class="nav-link">Price</a></li>
@@ -661,7 +663,7 @@
             <div class="col-lg-8 col-md-10 text-center offset-lg-2 offset-md-1">
                 <div class="service-nav">
                     <nav>
-                        <div class="nav justify-content-center service-nav-slider owl-carousel" id="service-tab"
+                        <div class="nav justify-content-center service-nav-slider owl-carousel overflow-hidden" id="service-tab"
                              role="tablist">
                             <button class="nav-links active mb-2" id="web-tab" data-bs-toggle="tab"
                                     data-bs-target="#web"

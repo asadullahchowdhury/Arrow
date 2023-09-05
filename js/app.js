@@ -8,11 +8,20 @@ window.addEventListener('scroll', function () {
 /*adding and removing active class for each section*/
 let addClassOnScroll = function () {
     let windowTop = $(window).scrollTop();
+   if (windowTop < 447){
+       console.log('wintop home')
+       $('.homeId').addClass('active')
+       $('.aboutId').removeClass('active')
+   }else {
+       $('.homeId').removeClass('active')
+
+   }
     $('section[id]').each(function (index, elem) {
         let offsetTop = $(elem).offset().top;
         let outerHeight = $(this).outerHeight(true);
 
         if( windowTop > (offsetTop - 50) && windowTop < ( offsetTop + outerHeight)) {
+            console.log(offsetTop,'off')
             let elemId = $(elem).attr('id');
             $(".navbar-nav li a.active").removeClass('active');
             $(".navbar-nav li a[href='#" + elemId + "']").addClass('active');
