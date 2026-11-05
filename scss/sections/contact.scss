@@ -13,3 +13,31 @@
     }
   }
 }
+
+.contact-us-section .contact-form {
+  .form-control.is-invalid {
+    box-shadow: inset 0 0 0 1px #dc3545;
+  }
+
+  .invalid-feedback {
+    text-align: left;
+  }
+
+  .form-status {
+    font-size: 14px;
+    min-height: 21px;
+
+    &.success {
+      color: #198754;
+    }
+
+    &.error {
+      color: #dc3545;
+    }
+  }
+
+  button[disabled] {
+    opacity: .7;
+    cursor: wait;
+  }
+}

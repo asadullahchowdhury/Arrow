@@ -146,3 +146,27 @@
     transform: scale(1);
   }
 }
+
+/*skip link for keyboard users*/
+.skip-link {
+  position: absolute;
+  left: 10px;
+  top: -60px;
+  z-index: 10000;
+  padding: 10px 20px;
+  background: $theme;
+  color: $white;
+  border-radius: 30px;
+  text-decoration: none;
+  transition: top .2s;
+
+  &:focus {
+    top: 10px;
+    color: $white;
+  }
+}
+
+/*image lightbox*/
+#lightbox .modal-body img {
+  max-height: 75vh;
+}

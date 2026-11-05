@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <title>TEMPO</title>
+  <rect x="14" y="14" width="32" height="32" rx="8" fill="none" stroke="#333" stroke-width="4"/><path d="M30 22 V30 L36 34" fill="none" stroke="#333" stroke-width="3.5" stroke-linecap="round"/>
+  <text x="56" y="39" font-family="Poppins, Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#333">TEMPO</text>
+</svg>

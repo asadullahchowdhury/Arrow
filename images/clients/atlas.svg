@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" width="200" height="60">
+  <title>ATLAS</title>
+  <circle cx="30" cy="30" r="15" fill="none" stroke="#333" stroke-width="4"/><path d="M15 30 H45 M30 15 C22 22 22 38 30 45 M30 15 C38 22 38 38 30 45" fill="none" stroke="#333" stroke-width="3"/>
+  <text x="56" y="39" font-family="Poppins, Arial, Helvetica, sans-serif" font-size="22" font-weight="700" letter-spacing="3" fill="#333">ATLAS</text>
+</svg>
