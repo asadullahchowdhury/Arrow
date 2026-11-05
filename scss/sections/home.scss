@@ -1,79 +1,375 @@
-/*home-slider*/
+/*home-slider (hero)*/
+
+$hero-ease: cubic-bezier(.2, .7, .2, 1);
 
 .home-slider {
-  min-height: 100vh;
-  overflow: hidden;
   position: relative;
+  height: 100vh;
+  height: 100svh;
+  min-height: 620px;
+  overflow: hidden;
+  background: #0b0b0f;
+  color: $white;
 
-  .slider-item {
-    width: 100%;
-    height: 100vh;
+  // owl wrappers must fill the hero
+  .slider-wrap,
+  .owl-stage-outer,
+  .owl-stage,
+  .owl-item {
+    height: 100%;
+  }
+
+  .hero-slide {
+    position: relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+
+    // readable gradient: dark on the text side, lighter on the image side
+    &:before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(90deg, rgba(8, 8, 12, .88) 0%, rgba(8, 8, 12, .62) 45%, rgba(8, 8, 12, .3) 100%),
+      linear-gradient(0deg, rgba(8, 8, 12, .7) 0%, rgba(8, 8, 12, 0) 35%);
+    }
+  }
+
+  // scroll-driven dolly: the whole image layer moves slower than the page and zooms in
+  .hero-media {
+    position: absolute;
+    inset: 0;
+    transform: translate3d(0, var(--hero-shift, 0px), 0) scale(var(--hero-scale, 1));
+    will-change: transform;
+  }
+
+  // per-slide dolly: each image slowly pulls back while its slide is on screen
+  .hero-bg {
+    position: absolute;
+    inset: 0;
     background-size: cover;
-    &.overlay{
-      &:before{
-        opacity: .5;
-      }
+    background-position: center;
+    transform: scale(1.18);
+    transform-origin: 60% 50%;
+    will-change: transform;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    padding-top: 70px;
+    transform: translate3d(0, var(--content-shift, 0px), 0);
+    opacity: var(--content-opacity, 1);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, .8);
+
+    &:before {
+      content: '';
+      width: 42px;
+      height: 2px;
+      background: $theme;
+    }
+  }
+
+  .hero-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(36px, 6vw, 76px);
+    font-weight: 600;
+    line-height: 1.08;
+    letter-spacing: -1.5px;
+    margin: 22px 0 22px;
+    color: $white;
+
+    .hl {
+      color: $theme;
+      white-space: nowrap;
+    }
+  }
+
+  .hero-text {
+    max-width: 560px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: rgba(255, 255, 255, .75);
+    margin: 0;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px 30px;
+    margin-top: 38px;
+
+    .btn-theme {
+      margin: 0;
+      animation: none;
+    }
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: $white;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    padding: 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .35);
+    transition: border-color .3s ease, color .3s ease;
+
+    i {
+      font-size: 13px;
+      transition: transform .35s $hero-ease;
     }
 
-    .slider-content {
-      z-index: 2;
-      position: absolute;
-      width: 100%;
-      top: 50%;
-      left: 0;
-      padding-top: 1px;
-      transform: translate(0%, -50%);
+    &:hover,
+    &:focus-visible {
       color: $white;
+      border-color: $theme;
 
-      h1, h2 {
-        font-size: 55px;
-        font-weight: 500;
-        animation-delay: .6s;
-
-        @media screen and (max-width: 991px) {
-          font-size: 45px;
-          line-height: 1.4;
-        }  @media screen and (max-width: 767px) {
-        font-size: 25px;
-        font-weight: 800;
-        letter-spacing: 1px;
-        }
-      }
-
-      p {
-        margin-top: 15px;
-        font-size: 15px;
-        font-weight: 400;
-        color: $text;
-        padding: 0 30px;
-        letter-spacing: 1px;
-        word-spacing: 2px;
-        animation-delay: 1s;
+      i {
+        transform: translateX(6px);
       }
     }
   }
 
-  .owl-dots {
+  // text waits off-screen, then rises in one line after another
+  .hero-anim {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    filter: blur(6px);
+  }
+
+  // footer: counter + progress on the left, arrows on the right
+  .hero-footer {
     position: absolute;
-    top: 90%;
-    left: 48%;
+    left: 0;
+    right: 0;
+    bottom: 40px;
+    z-index: 3;
+    opacity: var(--content-opacity, 1);
+  }
 
-    .owl-dot {
-      span{
-        width: 8px!important;
-        height: 8px!important;
-      }
-      &.active {
-        span {
-          background: $theme !important;
-        }
+  .hero-counter {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-variant-numeric: tabular-nums;
+
+    .current {
+      font-weight: 600;
+    }
+
+    .total {
+      opacity: .5;
+    }
+  }
+
+  .hero-progress {
+    position: relative;
+    width: 120px;
+    height: 2px;
+    background: rgba(255, 255, 255, .2);
+    overflow: hidden;
+
+    span {
+      position: absolute;
+      inset: 0;
+      background: $theme;
+      transform-origin: left center;
+      transform: scaleX(0);
+    }
+
+    &.is-running span {
+      animation: heroProgress var(--slide-duration, 7s) linear forwards;
+    }
+  }
+
+  .hero-arrows {
+    display: flex;
+    gap: 10px;
+
+    button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, .3);
+      background: transparent;
+      color: $white;
+      transition: background-color .3s ease, border-color .3s ease, transform .3s ease;
+
+      &:hover,
+      &:focus-visible {
+        background: $theme;
+        border-color: $theme;
+        outline: none;
       }
 
-      &:hover {
-        span {
-          background: $theme !important;
-        }
+      &:active {
+        transform: scale(.94);
       }
+    }
+  }
+
+  .scroll-cue {
+    position: absolute;
+    left: 50%;
+    bottom: 34px;
+    z-index: 3;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255, 255, 255, .7);
+    text-decoration: none;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: var(--content-opacity, 1);
+
+    .mouse {
+      position: relative;
+      width: 22px;
+      height: 36px;
+      border: 2px solid rgba(255, 255, 255, .6);
+      border-radius: 12px;
+
+      &:after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        top: 7px;
+        width: 4px;
+        height: 7px;
+        margin-left: -2px;
+        border-radius: 2px;
+        background: $white;
+        animation: scrollWheel 1.8s ease-in-out infinite;
+      }
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    min-height: 560px;
+
+    .hero-text {
+      font-size: 15px;
+    }
+
+    .hero-title {
+      letter-spacing: -.5px;
+    }
+
+    .hero-footer {
+      bottom: 26px;
+    }
+
+    .hero-arrows button {
+      width: 42px;
+      height: 42px;
+    }
+
+    .scroll-cue {
+      display: none;
+    }
+  }
+}
+
+// animations only start once the preloader is gone, so nothing plays behind it
+html:not(.is-loading) .home-slider {
+  .owl-item.active .hero-bg {
+    animation: heroDolly 9s cubic-bezier(.25, .1, .25, 1) forwards;
+  }
+
+  .owl-item.active .hero-anim {
+    animation: heroUp 1s $hero-ease both;
+    animation-delay: calc(var(--d, 0s) + .25s);
+  }
+}
+
+@keyframes heroDolly {
+  from {
+    transform: scale(1.18) translate3d(1.5%, 0, 0);
+  }
+  to {
+    transform: scale(1.02) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes heroUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+    filter: blur(0);
+  }
+}
+
+@keyframes heroProgress {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes scrollWheel {
+  0% {
+    opacity: 0;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-slider {
+    .hero-anim {
+      opacity: 1;
+      transform: none;
+      filter: none;
+    }
+
+    .hero-bg,
+    .hero-media {
+      transform: none;
+    }
+  }
+
+  html:not(.is-loading) .home-slider {
+    .owl-item.active .hero-bg,
+    .owl-item.active .hero-anim {
+      animation: none;
     }
   }
 }

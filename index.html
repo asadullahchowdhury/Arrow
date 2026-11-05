@@ -15,6 +15,12 @@
     <meta property="og:image" content="images/screenshot.png">
     <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
 
+    <!--lock scroll until the preloader finishes-->
+    <script>
+        document.documentElement.classList.add('js', 'is-loading');
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    </script>
+
     <!--jquery-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
             integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
@@ -22,19 +28,21 @@
     <!--jquery-->
 
     <!--bootstrap js-->
-    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
     <!--bootstrap js-->
 
 
     <!--bootstrap-->
-    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+          crossorigin="anonymous">
     <!--bootstrap-->
 
     <!--stylesheet-->
     <link rel="stylesheet" href="assets/css/style.css">
     <!--stylesheet-->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
     <!--owl carousel-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css"
@@ -51,20 +59,18 @@
 <a href="#about" class="skip-link">Skip to content</a>
 
 <!--page loader-->
-<div class="page-loader" aria-hidden="true">
-    <div class="middle">
-        <div class="anim">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
+<div class="page-loader" role="status" aria-label="Loading">
+    <div class="loader-inner">
+        <img src="images/logo-light.png" alt="" class="loader-logo">
+        <div class="loader-bar"><span></span></div>
+        <div class="loader-percent">0%</div>
     </div>
 </div>
 <!--page loader-->
 
 <!--header start-->
 <header class="header" id="header">
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
     <!--navbar start-->
     <nav class="navbar navbar-expand-lg" aria-label="Main navigation">
         <div class="container">
@@ -76,12 +82,12 @@
                 <img src="images/logo-dark.png" alt="Arrow home">
             </a>
 
-            <button class="navbar-toggler border-0 py-2" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarHome" aria-controls="navbarHome" aria-expanded="false"
                     aria-label="Toggle navigation">
-                <i class="fas fa-bars" aria-hidden="true"></i>
+                <span class="toggler-icon" aria-hidden="true"><span></span><span></span><span></span></span>
             </button>
-            <div class="navbar-collapse text-lg-end text-center collapse" id="navbarHome">
+            <div class="navbar-collapse collapse" id="navbarHome">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a href="#home" class="nav-link active">Home</a></li>
                     <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
@@ -91,6 +97,7 @@
                     <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
                     <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
                 </ul>
+                <a href="#contact" class="btn btn-theme header-cta"><span>Let’s talk</span></a>
             </div>
 
         </div>
@@ -103,69 +110,95 @@
 
 <!--home-slider start-->
 <div class="home-slider" id="home">
-    <div class="slider-wrap owl-carousel owl-theme">
-        <!--each slider-->
-        <div class="slider-item text-center position-relative overlay"
-             style="background-image: url('./images/bg1.jpg')">
-            <div class="slider-content">
-                <div class="overflow-hidden d-inline-block">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <h1 class="animate__animated animate__fadeInRight">We Are a Creative Digital Agency</h1>
-                            <p class="animate__animated animate__fadeInUp">We design and build websites, brands and
-                                digital products that are beautiful, fast and easy to use.</p>
-                            <a href="#contact" class="btn mt-30 btn-theme">
-                                <span>Start a project</span>
-                            </a>
+    <div class="slider-wrap owl-carousel">
+        <!--slide 1-->
+        <div class="hero-slide">
+            <div class="hero-media" aria-hidden="true">
+                <div class="hero-bg" style="background-image: url('./images/bg1.jpg')"></div>
+            </div>
+            <div class="container hero-content">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-9">
+                        <span class="hero-eyebrow hero-anim" style="--d: .1s">Creative Digital Agency</span>
+                        <h1 class="hero-title hero-anim" style="--d: .25s">We craft digital experiences that <span class="hl">move</span> people.</h1>
+                        <p class="hero-text hero-anim" style="--d: .4s">We design and build websites, brands and digital products that are beautiful, fast and easy to use.</p>
+                        <div class="hero-actions hero-anim" style="--d: .55s">
+                            <a href="#contact" class="btn btn-theme"><span>Start a project</span></a>
+                            <a href="#portfolio" class="btn-ghost">View our work
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--each slider-->
 
-        <!--each slider-->
-        <div class="slider-item text-center position-relative overlay"
-             style="background-image: url('./images/bg2.jpg')">
-            <div class="slider-content">
-                <div class="overflow-hidden d-inline-block">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <h2 class="h1 animate__animated animate__fadeInRight">Websites That Work as Hard as You
-                                Do</h2>
-                            <p class="animate__animated animate__fadeInUp">Responsive, accessible and built to turn
-                                visitors into customers, on every screen size.</p>
-                            <a href="#portfolio" class="btn mt-30 btn-theme">
-                                <span>See our work</span>
-                            </a>
+        <!--slide 2-->
+        <div class="hero-slide">
+            <div class="hero-media" aria-hidden="true">
+                <div class="hero-bg" style="background-image: url('./images/bg2.jpg')"></div>
+            </div>
+            <div class="container hero-content">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-9">
+                        <span class="hero-eyebrow hero-anim" style="--d: .1s">Web Design &amp; Development</span>
+                        <h2 class="hero-title hero-anim" style="--d: .25s">Websites that work as <span class="hl">hard</span> as you do.</h2>
+                        <p class="hero-text hero-anim" style="--d: .4s">Responsive, accessible and built to turn visitors into customers, on every screen size.</p>
+                        <div class="hero-actions hero-anim" style="--d: .55s">
+                            <a href="#contact" class="btn btn-theme"><span>Get a quote</span></a>
+                            <a href="#services" class="btn-ghost">Our services
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--each slider-->
 
-        <!--each slider-->
-        <div class="slider-item text-center position-relative overlay"
-             style="background-image: url('./images/bg3.jpg')">
-            <div class="slider-content">
-                <div class="overflow-hidden d-inline-block">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <h2 class="h1 animate__animated animate__fadeInRight">Brands People Remember</h2>
-                            <p class="animate__animated animate__fadeInUp">From logo to launch, we give your business
-                                a clear voice and a look that stands out.</p>
-                            <a href="#services" class="btn mt-30 btn-theme">
-                                <span>Our services</span>
-                            </a>
+        <!--slide 3-->
+        <div class="hero-slide">
+            <div class="hero-media" aria-hidden="true">
+                <div class="hero-bg" style="background-image: url('./images/bg3.jpg')"></div>
+            </div>
+            <div class="container hero-content">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-9">
+                        <span class="hero-eyebrow hero-anim" style="--d: .1s">Brand Identity</span>
+                        <h2 class="hero-title hero-anim" style="--d: .25s">Brands people <span class="hl">remember</span>.</h2>
+                        <p class="hero-text hero-anim" style="--d: .4s">From logo to launch, we give your business a clear voice and a look that stands out.</p>
+                        <div class="hero-actions hero-anim" style="--d: .55s">
+                            <a href="#contact" class="btn btn-theme"><span>Build your brand</span></a>
+                            <a href="#portfolio" class="btn-ghost">See branding work
+                                <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!--each slider-->
 
     </div>
+
+    <!--slide counter, progress and arrows-->
+    <div class="hero-footer">
+        <div class="container d-flex align-items-center">
+            <div class="hero-counter" aria-hidden="true">
+                <span class="current">01</span>
+                <span class="hero-progress"><span></span></span>
+                <span class="total">03</span>
+            </div>
+            <div class="hero-arrows ms-auto">
+                <button type="button" class="hero-prev" aria-label="Previous slide">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </button>
+                <button type="button" class="hero-next" aria-label="Next slide">
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <a href="#about" class="scroll-cue" aria-label="Scroll to content">
+        <span class="mouse" aria-hidden="true"></span>
+        <span class="label">Scroll</span>
+    </a>
 </div>
 <!--home-slider end  -->
 
@@ -406,266 +439,99 @@
 <!--portfolio section start-->
 <section class="portfolio-section sec-wrap" id="portfolio">
     <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center ">
-                <h2 class="sec-title">Creative Portfolio</h2>
+        <div class="portfolio-head">
+            <div class="portfolio-intro">
+                <span class="sec-eyebrow">Selected Work</span>
+                <h2 class="portfolio-title">Creative Portfolio</h2>
+                <p class="portfolio-lead">A few recent projects across branding, product and print. Click any
+                    project to see it up close.</p>
             </div>
 
-            <div class="col-sm-12">
-                <div class="project-tabs">
-                    <div class="nav justify-content-center" id="nav-tab" role="tablist">
-                        <button class="nav-links active mb-2" id="nav-all-tab" data-bs-toggle="tab"
-                                data-bs-target="#all" type="button" role="tab" aria-controls="all"
-                                aria-selected="true">All
-                        </button>
-                        <button class="nav-links mb-2" id="nav-brand-tab" data-bs-toggle="tab"
-                                data-bs-target="#brand" type="button" role="tab" aria-controls="brand"
-                                aria-selected="false" tabindex="-1">Branding
-                        </button>
-                        <button class="nav-links mb-2" id="nav-design-tab" data-bs-toggle="tab"
-                                data-bs-target="#design" type="button" role="tab" aria-controls="design"
-                                aria-selected="false" tabindex="-1">Product
-                        </button>
-                        <button class="nav-links mb-2" id="nav-graphic-tab" data-bs-toggle="tab"
-                                data-bs-target="#graphic" type="button" role="tab" aria-controls="graphic"
-                                aria-selected="false" tabindex="-1">Graphic
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-tab-content tab-content" id="nav-tab-content">
-
-                <!--all-->
-                <div class="tab-pane fade active show" id="all" role="tabpanel" aria-labelledby="nav-all-tab"
-                     tabindex="0">
-                    <div class="project-tab-main">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port1.jpg" alt="Bolt smartwatch app logo on a watch face">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port1.jpg" data-lightbox="Bolt Smartwatch App · Branding">
-                                                <p>Branding</p>
-                                                <h6>Bolt Smartwatch App</h6>
-                                            </a>
-
-                                            <a href="./images/port1.jpg" class="pop-img"
-                                               data-lightbox="Bolt Smartwatch App · Branding"
-                                               aria-label="Enlarge Bolt Smartwatch App">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port2.jpg" alt="Minimal white wall clock">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port2.jpg" data-lightbox="Tempo Wall Clock · Product Design">
-                                                <p>Product Design</p>
-                                                <h6>Tempo Wall Clock</h6>
-                                            </a>
-
-                                            <a href="./images/port2.jpg" class="pop-img"
-                                               data-lightbox="Tempo Wall Clock · Product Design"
-                                               aria-label="Enlarge Tempo Wall Clock">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port3.jpg" alt="Colourful paper coffee cup packaging">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port3.jpg" data-lightbox="Café Cup Packaging · Packaging">
-                                                <p>Packaging</p>
-                                                <h6>Café Cup Packaging</h6>
-                                            </a>
-
-                                            <a href="./images/port3.jpg" class="pop-img"
-                                               data-lightbox="Café Cup Packaging · Packaging"
-                                               aria-label="Enlarge Café Cup Packaging">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port4.jpg" alt="White shopping bag with a printed wordmark">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port4.jpg" data-lightbox="Retail Bag Identity · Branding">
-                                                <p>Branding</p>
-                                                <h6>Retail Bag Identity</h6>
-                                            </a>
-
-                                            <a href="./images/port4.jpg" class="pop-img"
-                                               data-lightbox="Retail Bag Identity · Branding"
-                                               aria-label="Enlarge Retail Bag Identity">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port5.jpg" alt="Seeing Red book cover design">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port5.jpg" data-lightbox="Seeing Red Book Cover · Graphic Design">
-                                                <p>Graphic Design</p>
-                                                <h6>Seeing Red Book Cover</h6>
-                                            </a>
-
-                                            <a href="./images/port5.jpg" class="pop-img"
-                                               data-lightbox="Seeing Red Book Cover · Graphic Design"
-                                               aria-label="Enlarge Seeing Red Book Cover">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--brand-->
-                <div class="tab-pane fade" id="brand" role="tabpanel" aria-labelledby="nav-brand-tab" tabindex="0">
-                    <div class="project-tab-main">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port1.jpg" alt="Bolt smartwatch app logo on a watch face">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port1.jpg" data-lightbox="Bolt Smartwatch App · Branding">
-                                                <p>Branding</p>
-                                                <h6>Bolt Smartwatch App</h6>
-                                            </a>
-
-                                            <a href="./images/port1.jpg" class="pop-img"
-                                               data-lightbox="Bolt Smartwatch App · Branding"
-                                               aria-label="Enlarge Bolt Smartwatch App">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-8 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port4.jpg" alt="White shopping bag with a printed wordmark">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port4.jpg" data-lightbox="Retail Bag Identity · Branding">
-                                                <p>Branding</p>
-                                                <h6>Retail Bag Identity</h6>
-                                            </a>
-
-                                            <a href="./images/port4.jpg" class="pop-img"
-                                               data-lightbox="Retail Bag Identity · Branding"
-                                               aria-label="Enlarge Retail Bag Identity">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--design-->
-                <div class="tab-pane fade" id="design" role="tabpanel" aria-labelledby="nav-design-tab" tabindex="0">
-                    <div class="project-tab-main">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port2.jpg" alt="Minimal white wall clock">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port2.jpg" data-lightbox="Tempo Wall Clock · Product Design">
-                                                <p>Product Design</p>
-                                                <h6>Tempo Wall Clock</h6>
-                                            </a>
-
-                                            <a href="./images/port2.jpg" class="pop-img"
-                                               data-lightbox="Tempo Wall Clock · Product Design"
-                                               aria-label="Enlarge Tempo Wall Clock">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port3.jpg" alt="Colourful paper coffee cup packaging">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port3.jpg" data-lightbox="Café Cup Packaging · Packaging">
-                                                <p>Packaging</p>
-                                                <h6>Café Cup Packaging</h6>
-                                            </a>
-
-                                            <a href="./images/port3.jpg" class="pop-img"
-                                               data-lightbox="Café Cup Packaging · Packaging"
-                                               aria-label="Enlarge Café Cup Packaging">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--graphic-->
-                <div class="tab-pane fade" id="graphic" role="tabpanel" aria-labelledby="nav-graphic-tab" tabindex="0">
-                    <div class="project-tab-main">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-6">
-                                <div class="item-img">
-                                    <img src="./images/port5.jpg" alt="Seeing Red book cover design">
-                                    <div class="img-overlay">
-                                        <div class="overlay-info">
-                                            <a href="./images/port5.jpg" data-lightbox="Seeing Red Book Cover · Graphic Design">
-                                                <p>Graphic Design</p>
-                                                <h6>Seeing Red Book Cover</h6>
-                                            </a>
-
-                                            <a href="./images/port5.jpg" class="pop-img"
-                                               data-lightbox="Seeing Red Book Cover · Graphic Design"
-                                               aria-label="Enlarge Seeing Red Book Cover">
-                                                <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="portfolio-filters" role="group" aria-label="Filter projects">
+                <button type="button" class="filter-btn is-active" data-filter="all" aria-pressed="true">All
+                    <sup>5</sup></button>
+                <button type="button" class="filter-btn" data-filter="branding" aria-pressed="false">Branding
+                    <sup>2</sup></button>
+                <button type="button" class="filter-btn" data-filter="product" aria-pressed="false">Product
+                    <sup>1</sup></button>
+                <button type="button" class="filter-btn" data-filter="packaging" aria-pressed="false">Packaging
+                    <sup>1</sup></button>
+                <button type="button" class="filter-btn" data-filter="editorial" aria-pressed="false">Editorial
+                    <sup>1</sup></button>
             </div>
         </div>
+
+        <div class="portfolio-grid">
+                <div class="work-item is-tall" data-category="packaging">
+                    <a href="./images/port3.jpg" class="work-link" data-lightbox="Café Cup Packaging" data-category-label="Packaging"
+                       data-desc="Playful cup design for a neighbourhood café, printed in two spot colours.">
+                        <img src="./images/port3.jpg" alt="Colourful paper coffee cup packaging" loading="lazy">
+                        <span class="work-info">
+                            <span class="work-cat">Packaging</span>
+                            <span class="work-title">Café Cup Packaging</span>
+                        </span>
+                        <span class="work-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="work-item " data-category="branding">
+                    <a href="./images/port1.jpg" class="work-link" data-lightbox="Bolt Smartwatch App" data-category-label="Branding"
+                       data-desc="App icon and identity for a fitness smartwatch, designed to stay readable at tiny sizes.">
+                        <img src="./images/port1.jpg" alt="Bolt smartwatch app logo on a watch face" loading="lazy">
+                        <span class="work-info">
+                            <span class="work-cat">Branding</span>
+                            <span class="work-title">Bolt Smartwatch App</span>
+                        </span>
+                        <span class="work-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="work-item " data-category="product">
+                    <a href="./images/port2.jpg" class="work-link" data-lightbox="Tempo Wall Clock" data-category-label="Product Design"
+                       data-desc="A minimal wall clock where the hour hand carries its own number.">
+                        <img src="./images/port2.jpg" alt="Minimal white wall clock" loading="lazy">
+                        <span class="work-info">
+                            <span class="work-cat">Product Design</span>
+                            <span class="work-title">Tempo Wall Clock</span>
+                        </span>
+                        <span class="work-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="work-item is-wide" data-category="branding">
+                    <a href="./images/port4.jpg" class="work-link" data-lightbox="Retail Bag Identity" data-category-label="Branding"
+                       data-desc="Wordmark and carry-bag system for a boutique retail launch.">
+                        <img src="./images/port4.jpg" alt="White shopping bag with a printed wordmark" loading="lazy">
+                        <span class="work-info">
+                            <span class="work-cat">Branding</span>
+                            <span class="work-title">Retail Bag Identity</span>
+                        </span>
+                        <span class="work-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="work-item " data-category="editorial">
+                    <a href="./images/port5.jpg" class="work-link" data-lightbox="Seeing Red Book Cover" data-category-label="Editorial"
+                       data-desc="Bold typographic cover for a short-story anthology.">
+                        <img src="./images/port5.jpg" alt="Seeing Red book cover design" loading="lazy">
+                        <span class="work-info">
+                            <span class="work-cat">Editorial</span>
+                            <span class="work-title">Seeing Red Book Cover</span>
+                        </span>
+                        <span class="work-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+
+                <div class="work-item work-cta is-wide" data-category="cta">
+                    <div class="work-cta-inner">
+                        <span class="sec-eyebrow light">Your project next?</span>
+                        <h3>Have an idea? Let’s make it real.</h3>
+                        <a href="#contact" class="btn btn-theme"><span>Start a project</span></a>
+                    </div>
+                </div>
+        </div>
+
+        <p class="portfolio-empty" hidden>No projects in this category yet.</p>
     </div>
 </section>
 <!--portfolio section end  -->
@@ -1440,15 +1306,27 @@
 
 
 <!--image lightbox-->
-<div class="modal fade" id="lightbox" tabindex="-1" aria-labelledby="lightbox-caption" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg">
+<div class="modal fade work-lightbox" id="lightbox" tabindex="-1" aria-labelledby="lightbox-caption" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content border-0">
-            <div class="modal-header border-0">
-                <h2 class="modal-title h6" id="lightbox-caption"></h2>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" class="btn-close btn-close-white lightbox-close" data-bs-dismiss="modal"
+                    aria-label="Close"></button>
+            <div class="lightbox-stage">
+                <button type="button" class="lightbox-nav prev" aria-label="Previous project">
+                    <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+                </button>
+                <img alt="" class="lightbox-img">
+                <button type="button" class="lightbox-nav next" aria-label="Next project">
+                    <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
+                </button>
             </div>
-            <div class="modal-body pt-0 text-center">
-                <img alt="" class="img-fluid">
+            <div class="lightbox-meta">
+                <div>
+                    <span class="lightbox-cat"></span>
+                    <h2 class="h5 mb-1" id="lightbox-caption"></h2>
+                    <p class="lightbox-desc mb-0"></p>
+                </div>
+                <span class="lightbox-count"></span>
             </div>
         </div>
     </div>

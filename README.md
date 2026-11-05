@@ -12,10 +12,11 @@ A responsive one-page website for a fictional creative digital agency, built wit
 
 ## Features
 
+- **Polished motion.** A preloader that locks scrolling until the page is ready, a cinematic dolly zoom on the hero images, scroll-driven parallax and staggered reveal animations as you scroll (all respecting `prefers-reduced-motion`).
 - **Fully responsive.** Works on phones, tablets and desktops, with a collapsible mobile menu that closes after a link is tapped.
-- **Sticky header with scrollspy.** The menu highlights the section you're reading.
-- **Hero slider** plus testimonial, team and client carousels (Owl Carousel).
-- **Filterable portfolio** with a lightbox to view each project.
+- **Smart header.** Transparent over the hero, solid once you scroll, hides while scrolling down and returns when scrolling up. It has a reading-progress line, and the menu highlights the section you're in.
+- **Hero slider** with a slide counter, autoplay progress bar and arrows, plus testimonial, team and client carousels (Owl Carousel).
+- **Filterable bento portfolio** with animated filtering and a lightbox that steps through the projects (arrow keys work too).
 - **Tabbed services** section.
 - **Animated counters** that count up when they scroll into view.
 - **Blog posts** that open in a modal.
@@ -31,7 +32,6 @@ A responsive one-page website for a fictional creative digital agency, built wit
 | Bootstrap 5.3 | Grid, collapse, tabs, modals |
 | jQuery 3.7 | DOM helpers and event handling |
 | Owl Carousel 2 | Sliders |
-| Animate.css | Hero entrance animations |
 | Font Awesome 6 | Icons |
 
 ## Project structure
@@ -57,12 +57,16 @@ No build step is needed just to view it. Open `index.html` through any local web
 npx serve .
 ```
 
-To change the styles, edit the files in `scss/` and recompile:
+To change the styles, edit the files in `scss/` and recompile (this downloads a pinned version of Sass automatically, so nothing needs to be installed globally):
 
 ```bash
-npm install -g sass   # once
 npm run build
 ```
+
+## Deployment
+
+- **GitHub Pages:** serves the repository root from `master`.
+- **Vercel:** configured by `vercel.json`, which runs `npm run build` and serves the repository root.
 
 ## Contact form setup
 

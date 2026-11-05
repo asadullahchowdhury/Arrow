@@ -1,132 +1,457 @@
+/*portfolio*/
+
+$work-ease: cubic-bezier(.2, .7, .2, 1);
+
+// small uppercase label used above section titles
+.sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: $theme;
+
+  &:before {
+    content: '';
+    width: 32px;
+    height: 2px;
+    background: currentColor;
+  }
+
+  &.light {
+    color: rgba(255, 255, 255, .8);
+
+    &:before {
+      background: $theme;
+    }
+  }
+}
+
 .portfolio-section {
-  .sec-title {
-    font-size: 30px;
+  .portfolio-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .portfolio-intro {
+    max-width: 520px;
+  }
+
+  .portfolio-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: clamp(30px, 4vw, 44px);
     font-weight: 600;
-    margin-bottom: 80px;
-    padding-bottom: 15px;
+    letter-spacing: -1px;
+    margin: 14px 0 12px;
+  }
+
+  .portfolio-lead {
+    color: $grayish;
+    font-size: 15px;
+    line-height: 1.7;
+    margin: 0;
+  }
+
+  // pill filters with a count badge
+  .portfolio-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 6px;
+    border-radius: 40px;
+    background: $light-bg;
+  }
+
+  .filter-btn {
+    border: 0;
+    background: transparent;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: $gray-6;
+    padding: 9px 18px;
+    border-radius: 30px;
+    transition: background-color .3s ease, color .3s ease, box-shadow .3s ease;
+
+    sup {
+      font-size: 10px;
+      margin-left: 2px;
+      opacity: .6;
+    }
+
+    &:hover {
+      color: $theme;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $theme;
+      outline-offset: 2px;
+    }
+
+    &.is-active {
+      background: $theme;
+      color: $white;
+      box-shadow: 0 10px 25px -10px rgba($theme, .8);
+    }
+  }
+
+  // bento grid: one tall tile, one wide tile, the rest square-ish
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 270px;
+    grid-auto-flow: dense;
+    gap: 24px;
+  }
+
+  .work-item {
     position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    background: $light-bg;
+    transition: opacity .45s ease, transform .45s $work-ease;
 
-    &:after {
+    &.is-tall {
+      grid-row: span 2;
+    }
+
+    &.is-wide {
+      grid-column: span 2;
+    }
+
+    &.is-leaving {
+      opacity: 0;
+      transform: scale(.94);
+    }
+
+    &.is-hidden {
+      display: none;
+    }
+
+    &.is-entering {
+      opacity: 0;
+      transform: translateY(24px) scale(.97);
+    }
+  }
+
+  // filtered views use a simple even grid
+  .portfolio-grid.is-filtered .work-item {
+    grid-row: auto;
+    grid-column: auto;
+  }
+
+  .work-link {
+    position: absolute;
+    inset: 0;
+    display: block;
+    color: $white;
+    text-decoration: none;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.001);
+      transition: transform 1.2s $work-ease;
+    }
+
+    // gradient that fades up from the bottom on hover
+    &:before {
       content: '';
-      width: 80px;
-      height: 1px;
-      background-color: $theme;
       position: absolute;
-      bottom: 0;
-      left: calc(50% - 40px);
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(0deg, rgba(10, 10, 14, .85) 0%, rgba(10, 10, 14, .2) 45%, rgba(10, 10, 14, 0) 70%);
+      opacity: 0;
+      transition: opacity .5s ease;
     }
-  }
 
-  .project-tabs {
-    .nav {
-      button {
-        border: none;
-        outline: none;
-        background: transparent;
-        font-weight: 600;
-        padding: 8px 20px;
-        border-radius: 30px;
-        cursor: pointer;
-        font-size: 14px;
-        font-family: 'Rubik', sans-serif;
-
-        &.active {
-          background: $theme;
-          box-shadow: 0px 10px 40px -4px rgba(0, 0, 0, 0.1);
-          color: $white;
-        }
-      }
+    .work-info {
+      position: absolute;
+      left: 26px;
+      right: 80px;
+      bottom: 24px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      transform: translateY(16px);
+      opacity: 0;
+      transition: transform .5s $work-ease, opacity .5s ease;
     }
-  }
 
+    .work-cat {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: #ff7aa8;
+    }
 
-  .project-tab-content {
-    .item-img {
-      position: relative;
-      margin-top: 30px;
+    .work-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
 
+    .work-arrow {
+      position: absolute;
+      right: 22px;
+      bottom: 22px;
+      z-index: 2;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: $white;
+      color: $theme;
+      transform: scale(.4) rotate(-45deg);
+      opacity: 0;
+      transition: transform .5s $work-ease, opacity .4s ease, background-color .3s ease, color .3s ease;
+    }
+
+    &:hover,
+    &:focus-visible {
       img {
-        width: 100%;
-        height: auto;
-        vertical-align: middle;
-        border-style: none;
+        transform: scale(1.08);
       }
 
-      .img-overlay {
-        position: absolute;
-        top: 10px;
-        left: 10px;
-        right: 10px;
-        bottom: 10px;
-        background: rgba(245, 25, 99, 0.8);
-        opacity: 0;
-        transition: all .5s;
-        display: flex;
-        -webkit-box-align: center;
-        -ms-flex-align: center;
-        align-items: center;
-
-        .overlay-info {
-          width: 100%;
-          text-align: center;
-
-          a {
-            text-decoration: none;
-            display: inline-block;
-            color: $white;
-
-            p {
-              color: $white;
-              font-weight: 400;
-              font-size: 13px;
-              padding-bottom: 15px;
-              position: relative;
-              &:after{
-                content: '';
-                width: 50px;
-                height: 1px;
-                background-color: $white;
-                position: absolute;
-                bottom: 0;
-                left: calc(50% - 25px);
-              }
-            }
-
-            h6{
-              color: $white;
-              font-weight: 700;
-              font-size: 16px;
-              letter-spacing: 1px;
-              margin-top: 15px;
-            }
-          }
-
-          .pop-img{
-            position: absolute;
-            right: 15px;
-            bottom: 15px;
-            font-size: 15px;
-            width: 30px;
-            height: 30px;
-            line-height: 30px;
-            border-radius: 50%;
-            background: #222;
-            color: $white;
-            transition: all .5s;
-            &:hover{
-              background: $white;
-              color: $theme;
-            }
-          }
-        }
+      &:before {
+        opacity: 1;
       }
-      &:hover{
-        transition: .5s all;
-        .img-overlay{
-          opacity: 1;
-          visibility: visible;
-        }
+
+      .work-info {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .work-arrow {
+        transform: scale(1) rotate(-45deg);
+        opacity: 1;
       }
     }
+
+    &:focus-visible {
+      outline: 3px solid $theme;
+      outline-offset: -3px;
+    }
+  }
+
+  // call-to-action tile
+  .work-cta {
+    background: $black1;
+    color: $white;
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 320px;
+      height: 320px;
+      right: -90px;
+      top: -120px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba($theme, .55), rgba($theme, 0) 70%);
+    }
+
+    .work-cta-inner {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px 40px;
+
+      h3 {
+        font-family: 'Poppins', sans-serif;
+        font-size: clamp(22px, 2.4vw, 30px);
+        font-weight: 600;
+        margin: 14px 0 22px;
+        max-width: 420px;
+      }
+
+      .btn-theme {
+        margin: 0;
+        animation: none;
+      }
+    }
+  }
+
+  .portfolio-grid.is-filtered .work-cta {
+    display: none;
+  }
+
+  .portfolio-empty {
+    text-align: center;
+    color: $grayish;
+    margin-top: 30px;
+  }
+
+  // touch screens have no hover, so always show the captions
+  @media (hover: none) {
+    .work-link {
+      &:before {
+        opacity: 1;
+      }
+
+      .work-info,
+      .work-arrow {
+        opacity: 1;
+        transform: none;
+      }
+
+      .work-arrow {
+        transform: rotate(-45deg);
+        width: 40px;
+        height: 40px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .portfolio-grid {
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 240px;
+    }
+
+    .work-cta.is-wide {
+      grid-column: span 1;
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 280px;
+      gap: 18px;
+    }
+
+    .work-item.is-tall,
+    .work-item.is-wide {
+      grid-row: auto;
+      grid-column: auto;
+    }
+
+    .portfolio-filters {
+      border-radius: 18px;
+    }
+  }
+}
+
+/*portfolio lightbox*/
+.work-lightbox {
+  .modal-content {
+    background: #0e0e12;
+    color: $white;
+    border-radius: 18px;
+    overflow: hidden;
+  }
+
+  .lightbox-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    z-index: 3;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: rgba(17, 17, 17, .75);
+    background-size: 12px;
+    opacity: 1;
+    transition: background-color .3s ease;
+
+    &:hover,
+    &:focus-visible {
+      background-color: $theme;
+      box-shadow: none;
+    }
+  }
+
+  .lightbox-stage {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f4f4f4;
+    min-height: 300px;
+  }
+
+  .lightbox-img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    transition: opacity .3s ease, transform .4s $work-ease;
+
+    &.is-switching {
+      opacity: 0;
+      transform: scale(.97);
+    }
+  }
+
+  .lightbox-nav {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    width: 48px;
+    height: 48px;
+    margin-top: -24px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(17, 17, 17, .75);
+    color: $white;
+    transition: background-color .3s ease;
+
+    &.prev {
+      left: 16px;
+    }
+
+    &.next {
+      right: 16px;
+    }
+
+    &:hover,
+    &:focus-visible {
+      background: $theme;
+      outline: none;
+    }
+  }
+
+  .lightbox-meta {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 22px 28px 26px;
+  }
+
+  .lightbox-cat {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ff7aa8;
+    margin-bottom: 6px;
+  }
+
+  .lightbox-desc {
+    color: rgba(255, 255, 255, .65);
+    font-size: 14px;
+  }
+
+  .lightbox-count {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    color: rgba(255, 255, 255, .5);
+    white-space: nowrap;
+    font-variant-numeric: tabular-nums;
   }
 }

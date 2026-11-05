@@ -1,34 +1,53 @@
 /*header*/
+// transparent over the hero, turns into a solid bar once the page scrolls,
+// slides away while scrolling down and comes back when scrolling up
+
+$ease-out: cubic-bezier(.2, .7, .2, 1);
 
 .header {
-  position: absolute;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  z-index: 2;
+  z-index: 1000;
+  transition: background-color .4s ease, box-shadow .4s ease, transform .5s $ease-out, backdrop-filter .4s ease;
+
+  .scroll-progress {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    pointer-events: none;
+
+    span {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(90deg, $theme, $yellow);
+      transform-origin: left center;
+      transform: scaleX(var(--scroll-progress, 0));
+    }
+  }
 
   .navbar {
-    .navbar-toggler {
-      color: $white;
+    padding: 0;
 
-      &:focus {
-        box-shadow: 0px 0px 5px rgba(255, 255, 255, .5);
-      }
+    > .container {
+      transition: padding .4s $ease-out;
+      padding-top: 18px;
+      padding-bottom: 18px;
     }
+  }
 
-    .collapse {
-      @media screen and (max-width: 991px) {
-        background-color: $black1;
-        padding: 20px 0;
-        max-height: 340px;
-        overflow: auto;
-      }
-    }
+  .logo {
+    width: 110px;
+    padding: 0;
+    transition: width .4s $ease-out;
 
-    .collapsing {
-      @media screen and (max-width: 991px) {
-        background-color: $black1;
-        max-height: 340px;
-        overflow: auto;
-      }
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -36,27 +55,136 @@
     display: none;
   }
 
-  &.sticky {
-    z-index: 4;
-    position: fixed;
-    background: $white;
-    box-shadow: 0px 10px 40px -4px rgba(0, 0, 0, 0.1);
-    padding: 0;
-    top: -100px;
-    left: 0;
-    width: 100%;
-    transition: transform .5s;
-    transform: translateY(100px);
+  // nav links with an underline that grows from the centre
+  .navbar-nav {
+    align-items: center;
 
-    .navbar {
-      .navbar-toggler {
-        color: $black;
+    .nav-item {
+      .nav-link {
+        position: relative;
+        font-size: 13px;
+        font-weight: 500;
+        color: rgba(255, 255, 255, .85);
+        letter-spacing: .6px;
+        margin: 0 4px;
+        padding: 8px 10px;
+        transition: color .3s ease;
 
-        &:focus {
-          box-shadow: 0px 0px 5px rgba(0, 0, 0, .5);
+        &:after {
+          content: '';
+          position: absolute;
+          left: 10px;
+          right: 10px;
+          bottom: 2px;
+          height: 2px;
+          border-radius: 2px;
+          background: $theme;
+          transform: scaleX(0);
+          transition: transform .35s $ease-out;
         }
 
+        &:hover,
+        &:focus-visible {
+          color: $white;
+
+          &:after {
+            transform: scaleX(1);
+          }
+        }
+
+        &.active {
+          color: $white;
+
+          &:after {
+            transform: scaleX(1);
+          }
+        }
       }
+    }
+  }
+
+  .header-cta {
+    margin: 0 0 0 18px;
+    padding: 10px 26px;
+    font-size: 13px;
+    box-shadow: 0 10px 25px -8px rgba($theme, .7);
+    animation: none;
+  }
+
+  // custom hamburger that morphs into an X
+  .navbar-toggler {
+    padding: 8px;
+    box-shadow: none !important;
+
+    .toggler-icon {
+      position: relative;
+      display: block;
+      width: 26px;
+      height: 18px;
+
+      span {
+        position: absolute;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        border-radius: 2px;
+        background: $white;
+        transition: transform .35s $ease-out, opacity .2s ease, top .35s $ease-out, background-color .3s;
+
+        &:nth-child(1) {
+          top: 0;
+        }
+
+        &:nth-child(2) {
+          top: 8px;
+        }
+
+        &:nth-child(3) {
+          top: 16px;
+          width: 65%;
+          left: auto;
+          right: 0;
+        }
+      }
+    }
+
+    &[aria-expanded="true"] .toggler-icon span {
+      &:nth-child(1) {
+        top: 8px;
+        transform: rotate(45deg);
+      }
+
+      &:nth-child(2) {
+        opacity: 0;
+      }
+
+      &:nth-child(3) {
+        top: 8px;
+        width: 100%;
+        transform: rotate(-45deg);
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid $theme;
+      outline-offset: 2px;
+    }
+  }
+
+  // scrolled state: solid, compact bar
+  &.is-scrolled {
+    background-color: rgba(255, 255, 255, .92);
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    box-shadow: 0 10px 40px -12px rgba(0, 0, 0, .18);
+
+    .navbar > .container {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+
+    .logo {
+      width: 96px;
     }
 
     .light {
@@ -67,44 +195,91 @@
       display: block;
     }
 
+    .navbar-nav .nav-item .nav-link {
+      color: $dark;
+
+      &:hover,
+      &.active {
+        color: $theme;
+      }
+    }
+
+    .navbar-toggler .toggler-icon span {
+      background: $dark;
+    }
+  }
+
+  &.is-hidden {
+    transform: translateY(-100%);
+  }
+
+  // mobile menu panel
+  @media screen and (max-width: 991px) {
+    .navbar-collapse {
+      margin-top: 14px;
+      padding: 10px 0 20px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+    }
+
     .navbar-nav {
-      .nav-item {
-        .nav-link {
-          color: $black;
+      align-items: stretch;
 
-          @media screen and (max-width: 991px) {
-            color: $text;
-          }
+      .nav-item .nav-link {
+        font-size: 16px;
+        padding: 12px 4px;
+        margin: 0;
+
+        &:after {
+          left: 4px;
+          right: auto;
+          width: 24px;
+          transform-origin: left;
         }
       }
     }
-  }
 
-  .logo {
-    width: 100px;
-    padding: 15px 0;
-
-    img {
-      width: 100%;
-      height: auto;
+    .header-cta {
+      display: block;
+      margin: 16px 0 0;
+      text-align: center;
     }
-  }
 
-  .navbar-nav {
-    .nav-item {
-      .nav-link {
-        font-size: 13px;
-        font-weight: 500;
-        color: $text;
-        letter-spacing: .5px;
-        margin: 15px 5px;
-        transition: all .5s;
+    &.menu-open {
+      background-color: rgba(17, 17, 17, .97);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
 
+      .light {
+        display: block;
+      }
 
-        &.active {
-          color: $theme;
+      .dark {
+        display: none;
+      }
+
+      .navbar-nav .nav-item .nav-link {
+        color: rgba(255, 255, 255, .85);
+
+        &.active,
+        &:hover {
+          color: $white;
         }
       }
+
+      .navbar-toggler .toggler-icon span {
+        background: $white;
+      }
     }
+
+    &.is-scrolled .navbar-collapse {
+      border-top-color: rgba(0, 0, 0, .08);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header,
+  .header * {
+    transition: none !important;
   }
 }

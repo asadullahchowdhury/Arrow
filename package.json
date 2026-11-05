@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "sass --silence-deprecation=import scss/style.scss assets/css/style.css"
+    "build": "npx --yes sass@1.93.2 --silence-deprecation=import scss/style.scss assets/css/style.css"
   },
   "dependencies": {
     "animate.css": "^4.1.1",

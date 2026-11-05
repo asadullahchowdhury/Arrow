@@ -64,88 +64,94 @@
 
 
 /*page loader*/
-.page-loader{
-  position: fixed;
-  top: 0;
-  left: 0;
+// scroll stays locked until the loader has finished
+html.is-loading,
+html.is-loading body {
+  overflow: hidden;
   height: 100%;
-  text-align: center;
-  width: 100%;
-  background-color: #000;
-  z-index: 9999999999999;
-  .middle{
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    .anim{
-      display: inline-block;
-      position: relative;
-      width: 64px;
-      height: 64px;
-      div{
-        position: absolute;
-        top: 27px;
-        width: 11px;
-        height: 11px;
-        border-radius: 50%;
-        background:$white;
-        animation-timing-function: cubic-bezier(0, 1, 1, 0);
-        &:nth-child(1){
-          left: 6px;
-          animation: lds-ellipsis1 0.6s infinite;
-        }
-        &:nth-child(2){
-          left: 6px;
-          animation: lds-ellipsis2 0.6s infinite;
-        }
-        &:nth-child(3){
-          left: 26px;
-          animation: lds-ellipsis2 0.6s infinite;
-        }
-        &:nth-child(4){
-          left: 45px;
-          animation: lds-ellipsis3 0.6s infinite;
-        }
-      }
+}
+
+.page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $black1;
+  transition: transform .9s cubic-bezier(.77, 0, .18, 1), visibility 0s linear .9s;
+
+  .loader-inner {
+    text-align: center;
+    transition: opacity .4s ease, transform .4s ease;
+  }
+
+  .loader-logo {
+    width: 130px;
+    height: auto;
+    animation: loaderPulse 1.6s ease-in-out infinite;
+  }
+
+  .loader-bar {
+    width: 160px;
+    height: 2px;
+    margin: 28px auto 12px;
+    background: rgba(255, 255, 255, .12);
+    overflow: hidden;
+    border-radius: 2px;
+
+    span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: $theme;
+      transition: width .3s ease;
+    }
+  }
+
+  .loader-percent {
+    color: rgba(255, 255, 255, .55);
+    font-size: 11px;
+    letter-spacing: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  // curtain slides up to reveal the page
+  &.is-done {
+    transform: translateY(-100%);
+    visibility: hidden;
+
+    .loader-inner {
+      opacity: 0;
+      transform: translateY(-20px);
     }
   }
 }
 
-
-@keyframes lds-ellipsis3 {
-  0% {
-    transform: scale(1);
+@keyframes loaderPulse {
+  0%, 100% {
+    opacity: 1;
   }
-  100% {
-    transform: scale(0);
-  }
-}
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(19px, 0);
+  50% {
+    opacity: .55;
   }
 }
 
-@keyframes lds-ellipsis2 {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(19px, 0);
+@media (prefers-reduced-motion: reduce) {
+  .page-loader {
+    transition: opacity .3s, visibility 0s linear .3s;
+
+    &.is-done {
+      transform: none;
+      opacity: 0;
+    }
+
+    .loader-logo {
+      animation: none;
+    }
   }
 }
 
-@keyframes lds-ellipsis1 {
-  0% {
-    transform: scale(0);
-  }
-  100% {
-    transform: scale(1);
-  }
-}
 
 /*skip link for keyboard users*/
 .skip-link {
@@ -166,7 +172,37 @@
   }
 }
 
-/*image lightbox*/
-#lightbox .modal-body img {
-  max-height: 75vh;
+// nothing animating in from the side should ever widen the page
+html,
+body {
+  overflow-x: clip;
+}
+
+/*reveal on scroll (attributes are added by js/app.js)*/
+.js [data-reveal] {
+  opacity: 0;
+  transition: opacity .9s ease, transform .9s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: var(--reveal-delay, 0s);
+  will-change: opacity, transform;
+}
+
+.js [data-reveal="up"] {
+  transform: translate3d(0, 48px, 0);
+}
+
+.js [data-reveal="left"] {
+  transform: translate3d(-48px, 0, 0);
+}
+
+.js [data-reveal="right"] {
+  transform: translate3d(48px, 0, 0);
+}
+
+.js [data-reveal="zoom"] {
+  transform: scale(.92);
+}
+
+.js [data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
 }
