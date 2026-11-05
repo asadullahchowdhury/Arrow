@@ -636,14 +636,14 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
-.number-section .each-num-wrap {
-  position: relative;
-  z-index: 2;
-}
 @media screen and (max-width: 991px) {
   .number-section .each-num-wrap {
     margin-bottom: 50px;
   }
+}
+.number-section .each-num-wrap {
+  position: relative;
+  z-index: 2;
 }
 .number-section .each-num-wrap .icon {
   font-size: 35px;

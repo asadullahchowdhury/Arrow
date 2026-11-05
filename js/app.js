@@ -8,30 +8,32 @@ window.addEventListener('scroll', function () {
 /*adding and removing active class for each section*/
 let addClassOnScroll = function () {
     let windowTop = $(window).scrollTop();
-   if (windowTop < 447){
-       console.log('wintop home')
-       $('.homeId').addClass('active')
-       $('.aboutId').removeClass('active')
-   }else {
-       $('.homeId').removeClass('active')
+    let currentId = 'home';
 
-   }
-    $('section[id]').each(function (index, elem) {
+    // the home slider is a div, so include it alongside the sections
+    $('#home, section[id]').each(function (index, elem) {
         let offsetTop = $(elem).offset().top;
-        let outerHeight = $(this).outerHeight(true);
+        let outerHeight = $(elem).outerHeight(true);
 
-        if( windowTop > (offsetTop - 50) && windowTop < ( offsetTop + outerHeight)) {
-            console.log(offsetTop,'off')
-            let elemId = $(elem).attr('id');
-            $(".navbar-nav li a.active").removeClass('active');
-            $(".navbar-nav li a[href='#" + elemId + "']").addClass('active');
+        if (windowTop >= (offsetTop - 50) && windowTop < (offsetTop + outerHeight)) {
+            currentId = $(elem).attr('id');
         }
     });
+
+    $(".navbar-nav li a.active").removeClass('active');
+    $(".navbar-nav li a[href='#" + currentId + "']").addClass('active');
 };
 
 $(function () {
-    $(window).on('scroll', function () {
-        addClassOnScroll();
+    $(window).on('scroll', addClassOnScroll);
+    addClassOnScroll();
+
+    // close the mobile menu after a link is tapped
+    $('.navbar-nav .nav-link').on('click', function () {
+        let menu = document.getElementById('navbarHome');
+        if (menu.classList.contains('show')) {
+            bootstrap.Collapse.getOrCreateInstance(menu).hide();
+        }
     });
 });
 
@@ -60,16 +62,13 @@ window.addEventListener('load', function () {
         } else if (num.classList.contains('num-4')) {
             countUP('.num-4', 1946)
         }
-        console.log(num)
     })
 
 })
 
 function countUP(c, number) {
     const count1 = document.querySelector(c)
-    const count1val = parseInt(document.querySelector('.num-1').innerText)
-    let count = count1val
-    console.log(count1val, 'hello')
+    let count = parseInt(count1.innerText) || 0
     let timeout = null
     timeout = setInterval(() => {
         if (count >= number) {
